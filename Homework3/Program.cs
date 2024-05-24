@@ -22,7 +22,11 @@ void Show()
 
 
         curOption = Console.ReadLine();
-        int Id = curOption != null ? Convert.ToInt16(curOption) : 1;
+        Id = curOption != null ? Convert.ToInt16(curOption) : 1;
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"{Options[Id-1]}");
+        Console.ResetColor();
     }
     catch (Exception)
     {
