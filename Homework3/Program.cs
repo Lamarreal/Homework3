@@ -1,28 +1,42 @@
-﻿
+﻿string[] Options = { "Scenario 1 [1]", "Scenario 2 [2]", "Scenario 3 [3]" };
+int Id = 1;
 
-string[] Options = { "Scenario 1", "Scenario 2", "Scenario 3" };
-
-
-string text = "";
-
-
-
-foreach (string option in Options)
+void Show()
 {
+    try
+    {
+        Console.Clear();
+        string? curOption = null;
+        string text = "";
+        foreach (string option in Options)
+        {
     
-    text += option + "|";
+           text += option + " | ";
+        }
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("| " + text);
+        Console.ResetColor();
+
+        Console.Write("> (int) ");
+
+
+        curOption = Console.ReadLine();
+        int Id = curOption != null ? Convert.ToInt16(curOption) : 1;
+    }
+    catch (Exception)
+    {
+        Console.Clear();
+        Console.WriteLine("Error!");
+        Show();
+    }
+   
+
 }
 
-Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine(text);
-Console.ResetColor();
 
-Console.Write("> (int) ");
+Show();
 
-
-string? curOption = Console.ReadLine();
-
-int Id = curOption != null ? Convert.ToInt16(curOption) : 1;
 
 void Sc1()
 {
@@ -52,7 +66,21 @@ void Sc1()
 
 void Sc2()
 {
+    Console.WriteLine("Enter number");
+    Console.Write("> ");
+    string? inp = Console.ReadLine();
 
+    try
+    {
+        float number = Convert.ToSingle(inp);
+        float result = number % 2 == 0 ? number / 2 : number / 3;
+        Console.WriteLine(result);
+    }
+    catch (Exception)
+    {
+        Console.WriteLine("Incorect number!");
+        Sc2();
+    }
 }
 
 void Sc3()
